@@ -46,7 +46,7 @@ if(array_key_exists ( $request , $web )){
   /*
   * check controller if exist
   */
-
+  var_dump($web[$request]);
 }
 else{
   echo "URL does not exist";
