@@ -5,6 +5,7 @@ namespace system\route;
 class Web{
 
   private $web_route = array();
+  
   public static $data = array();
 
   function __construct(){
@@ -20,7 +21,8 @@ class Web{
   }
 
   public static function set_webURL($url, $method){
-    array_push(self::$data,array($url => $method));
+    //array_push(self::$data,array($url => $method));
+    self::$data[$url] = $method;
   }
 
 }
