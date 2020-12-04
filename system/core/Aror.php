@@ -37,7 +37,16 @@ $url_request = $_SERVER['REQUEST_URI'];
 * the directory of the index.php should be determined.
 */
 
+if($_PATH === str_replace('/','',$app_path)){
+$request =  ltrim($url_request, '/');
+
+}
+else{
+
 $request = str_replace(_APP_PATH,'',$url_request);
+
+}
+
 
 /*
 * check requested route exist
