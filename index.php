@@ -6,8 +6,6 @@
 
 $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-$_PATH = basename($_SERVER['DOCUMENT_ROOT']);
-
 $app_path = basename(__DIR__);
 
 /*

@@ -2,16 +2,23 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/*
+* load constant
+*/
+
 require_once(BASEPATH."constant/cons.php");
 
 /*
-  ENV values
-  [0]=>development,
-  [1]=>testing,
-  [2]=>production
+* load configuration setting default/developer
 */
 
-define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : ENV[0]);
+require_once(BASEPATH."configuration/config.php");
+
+/*
+* set server Environment
+*/
+
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : ENV[$environment]);
 
 switch (ENVIRONMENT)
 {
@@ -38,6 +45,3 @@ switch (ENVIRONMENT)
 		echo 'The application environment is not set correctly.';
 		exit(1); // EXIT_ERROR
 }
-
-
-require_once(BASEPATH."configuration/config.php");

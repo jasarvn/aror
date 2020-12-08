@@ -1,6 +1,13 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+/*
+* Initialize Definition
+*/
+
+require_once(BASEPATH."configuration/Config.php");
+
 /*
 * Initialize constants
 */
@@ -11,52 +18,16 @@ require_once(BASEPATH."constant\cons.php");
 * initiate routes
 */
 
-require_once(BASEPATH."route\Web.php");
+require_once(BASEPATH."route\Routing.php");
 
-require_once("application\\route\web.php");
+use system\route\routing as route;
 
-use system\route\web as web;
+$route = new route;
+$controller_path = $route->controller_path;
+$controller = $route->controller;
+$method = $route->method;
 
-$route = new web();
+require_once($controller_path);
 
-/*
-* capture requested route
-*/
-
-$web = $route->get_web_route();
-
-$url_request = $_SERVER['REQUEST_URI'];
-/*
-* determine where the index file resides.
-*/
-
-/*
-* get the url_route
-* the url_route is the part that is after index.php
-* and because of .htaccess where the index.php is not necessary in the url
-* the directory of the index.php should be determined.
-*/
-
-if($_PATH === str_replace('/','',$app_path)){
-$request =  ltrim($url_request, '/');
-
-}
-else{
-
-$request = str_replace(_APP_PATH,'',$url_request);
-
-}
-
-
-/*
-* check requested route exist
-*/
-if(array_key_exists ( $request , $web )){
-  /*
-  * check controller if exist
-  */
-  var_dump($web[$request]);
-}
-else{
-  echo "URL does not exist";
-}
+$aror = new $controller;
+$aror->$method();
