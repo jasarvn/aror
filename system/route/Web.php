@@ -36,7 +36,7 @@ class Web implements Routes{
   }
 
   public function get_route(){
-
+    return $this->web_route;
   }
 
 }

@@ -39,7 +39,7 @@ class Routing {
     $this->uri_request = $this->get_uri_request();
 
     $web = new web;
-    $this->web = $web->get_web_route();
+    $this->web = $web->get_route();
     $this->init_route();
 
 
